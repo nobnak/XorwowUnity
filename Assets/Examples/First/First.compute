@@ -1,5 +1,5 @@
 #pragma kernel CSMain
-#include "../Packages/Xorwow/Xorwow.cginc"
+#include "../../Packages/Xorwow/Xorwow.cginc"
 
 
 
@@ -10,6 +10,5 @@ RWTexture2D<float4> _OutputTex;
 void CSMain(uint3 id : SV_DispatchThreadID) {
 	uint i = id.x + id.y * _Width;
 	float r = XorwowRandomFloat(i);
-    //_OutputTex[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
     _OutputTex[id.xy] = float4(r, r, r, 1);
 }

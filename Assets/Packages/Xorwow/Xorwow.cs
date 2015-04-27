@@ -58,7 +58,14 @@ namespace Xorwow {
 				compute.SetBuffer(kernelIndex, name, xorwow.XorwowStateBuf);
 			}
 			public static void SetXorwowStateBuf(this ComputeShader compute, int kernelIndex, XorwowService xorwow) {
-				compute.SetBuffer(kernelIndex, XorwowService.CS_XORWOW_STATE_BUF, xorwow.XorwowStateBuf);
+				SetXorwowStateBuf(compute, kernelIndex, XorwowService.CS_XORWOW_STATE_BUF, xorwow);
+			}
+
+			public static void SetXorwowStateBuf(this Material mat, string name, XorwowService xorwow) {
+				mat.SetBuffer(name, xorwow.XorwowStateBuf);
+			}
+			public static void SetXorwowStateBuf(this Material mat, XorwowService xorwow) {
+				SetXorwowStateBuf(mat, XorwowService.CS_XORWOW_STATE_BUF, xorwow);
 			}
 		}
 	}
