@@ -1,4 +1,4 @@
-# Xorwow[1] RNG (Random Number Generator) for Unity
+# Xorwow[1] RNG (Random Number Generator) for Compute Shader in Unity
 [Xorwow Unity Package](Packages/Xorwow.unitypackage)
 
 ## Usage
@@ -19,7 +19,7 @@ Include Xorwow.cginc in Computer Shader
 ```hlsl
 #include "Xorwow/Xorwow.cginc"
 ```
-Get Random Value.
+Get Random Value in Compute Shader.
 ```hlsl
 uint randomUint = XorwowRandom(stateIndex);
 float randomFloat = XorwowRandomFloat(stateIndex);
