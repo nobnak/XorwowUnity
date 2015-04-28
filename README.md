@@ -4,6 +4,7 @@
 ## Usage
 ### In Compute Shader
 [Sample](Assets/Examples/First)
+
 Include Namespaces.
 ```c#
 using Xorwow;
@@ -32,8 +33,9 @@ _xorwow.Dispose();
 ```
 
 ### In Fragment Shader
-Include Namespaces.
 [Sample](Assets/Examples/Second)
+
+Include Namespaces.
 ```c#
 using Xorwow;
 using Xorwow.Extension;
