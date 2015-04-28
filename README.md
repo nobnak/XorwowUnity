@@ -48,7 +48,7 @@ Set Xorwow State Buffer on Material and Make it a Random Write Target
 ```c#
 Graphics.ClearRandomWriteTargets();
 mat.SetXorwowStateBuf(_xorwow);
-Graphics.SetRandomWriteTarget(1, _xorwow.XorwowStateBuf);
+Graphics.SetRandomWriteTarget(1, _xorwow.XorwowStateBuf); // If number of Render Targets is 1
 _outputTex.DiscardContents();
 Graphics.Blit(null, _outputTex, mat);
 Graphics.ClearRandomWriteTargets();
