@@ -1,7 +1,8 @@
-# Xorwow[1] RNG (Random Number Generator) for Compute Shader in Unity
+# Xorwow[1] RNG (Random Number Generator) for Unity
 [Xorwow Unity Package](Packages/Xorwow.unitypackage)
 
 ## Usage
+### In Compute Shader
 Include Namespaces.
 ```c#
 using Xorwow;
@@ -23,6 +24,42 @@ Get Random Value in Compute Shader.
 ```hlsl
 uint randomUint = XorwowRandom(stateIndex);
 float randomFloat = XorwowRandomFloat(stateIndex);
+```
+Finally, Call Dispose Method in OnDestroy()
+```c#
+_xorwow.Dispose();
+```
+
+### In Fragment Shader
+Include Namespaces.
+```c#
+using Xorwow;
+using Xorwow.Extension;
+```
+Instantiate Xorwow.XorwowService class.
+```c#
+XorwowService _xorwow = new XorwowService(size * size);
+```
+Set Xorwow State Buffer on Material and Make it a Random Write Target
+```c#
+Graphics.ClearRandomWriteTargets();
+mat.SetXorwowStateBuf(_xorwow);
+Graphics.SetRandomWriteTarget(1, _xorwow.XorwowStateBuf);
+_outputTex.DiscardContents();
+Graphics.Blit(null, _outputTex, mat);
+Graphics.ClearRandomWriteTargets();
+```
+Include Xorwow.cginc in Fragment Shader
+```c#
+#include "../../Packages/Xorwow/Xorwow.cginc"
+```
+Get Random Value in Fragment Shader
+```c#
+float r = XorwowRandomFloat(i);
+```
+Finally, Destroy Xorwow State Buffer in OnDestroy()
+```c#
+_xorwow.Dispose();
 ```
 
 ## References
