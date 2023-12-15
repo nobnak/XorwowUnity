@@ -5,11 +5,12 @@
 	},
 	"name": "jp.nobnak.random-xorwow",
 	"displayName": "Xorwow random",
-	"version": "0.1.1",
+	"version": "0.2.0",
 
 	"samples": [
 	],
 
 	"dependencies": {
+		"com.unity.mathematics": "1.2.6"
 	}
 }

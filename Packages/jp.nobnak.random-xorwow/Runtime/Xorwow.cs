@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
+using Random = Unity.Mathematics.Random;
 
 namespace Xorwow {
 
@@ -9,7 +10,10 @@ namespace Xorwow {
 
 		public ComputeBuffer XorwowStateBuf { get; private set; }
 
-		public XorwowService(int count) {
+		protected Random rand;
+
+		public XorwowService(int count, uint seed = 31) {
+			rand = new Random(seed);
 			Init(count);
 		}
 
@@ -17,7 +21,7 @@ namespace Xorwow {
 			ReleaseBuf();
 			var states = new XorwowState[count];
 			for (var i = 0; i < count; i++)
-				states[i] = XorwowState.Generate();
+				states[i] = GenerateState();
 			XorwowStateBuf = new ComputeBuffer(count, Marshal.SizeOf(states[0]));
 			XorwowStateBuf.SetData(states);
 		}
@@ -26,29 +30,30 @@ namespace Xorwow {
 		public void Dispose () {
 			ReleaseBuf();
 		}
-		#endregion
+        #endregion
 
-		private void ReleaseBuf() {
+        #region methods
+        public XorwowState GenerateState() {
+            return new XorwowState() {
+                x = rand.NextUInt(1, int.MaxValue),
+                y = rand.NextUInt(1, int.MaxValue),
+                z = rand.NextUInt(1, int.MaxValue),
+                w = rand.NextUInt(1, int.MaxValue),
+                v = rand.NextUInt(1, int.MaxValue),
+                d = rand.NextUInt(1, int.MaxValue),
+            };
+        }
+        private void ReleaseBuf() {
 			if (XorwowStateBuf != null) {
 				XorwowStateBuf.Release();
 				XorwowStateBuf = null;
 			}
 		}
+        #endregion
 
-		[StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential)]
 		public struct XorwowState {
 			public uint x, y, z, w, v, d;
-
-			public static XorwowState Generate() {
-				return new XorwowState(){ 
-					x = (uint) Random.Range(1, int.MaxValue),
-					y = (uint) Random.Range(1, int.MaxValue),
-					z = (uint) Random.Range(1, int.MaxValue),
-					w = (uint) Random.Range(1, int.MaxValue),
-					v = (uint) Random.Range(1, int.MaxValue),
-					d = (uint) Random.Range(1, int.MaxValue),
-				};
-			}
 		};
 	}
 

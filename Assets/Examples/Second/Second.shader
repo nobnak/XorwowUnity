@@ -33,7 +33,7 @@ Shader "Custom/Second" {
 			}
 			float4 frag(vs2ps IN) : COLOR {
 				uint i = dot(uint2(IN.uv), int2(1, _Width));
-				float r = XorwowRandomFloat(i);
+				float r = Xorwow_NextFloat(i);
 				return float4(r, r, r, 1);
 			}
 			ENDCG
