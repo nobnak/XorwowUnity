@@ -1,5 +1,9 @@
 # Xorwow[1] RNG (Random Number Generator) for Unity
-[Xorwow Unity Package](Packages/Xorwow.unitypackage)
+
+## Installation
+- Add Scoped Registry "https://package.openupm.com"
+- Add scope "jp.nobnak" in the registry
+- Add package "[Xorwow random](https://openupm.com/packages/jp.nobnak.random-xorwow/)" in Package Manager.
 
 ## Usage
 ### In Compute Shader
@@ -20,7 +24,7 @@ compute.SetXorwowStateBuf(0, _xorwow);
 ```
 Include Xorwow.cginc in Computer Shader
 ```hlsl
-#include "Xorwow/Xorwow.cginc"
+#include "Packages/jp.nobnak.random-xorwow/ShaderLibrary/Xorwow.cginc"
 ```
 Get Random Value in Compute Shader.
 ```hlsl
@@ -55,7 +59,7 @@ Graphics.ClearRandomWriteTargets();
 ```
 Include Xorwow.cginc in Fragment Shader
 ```c#
-#include "../../Packages/Xorwow/Xorwow.cginc"
+#include "Packages/jp.nobnak.random-xorwow/ShaderLibrary/Xorwow.cginc"
 ```
 Get Random Value in Fragment Shader
 ```c#
