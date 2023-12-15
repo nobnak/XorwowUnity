@@ -1,0 +1,15 @@
+{
+	"author": {
+		"name": "Nakata Nobuyuki",
+		"email": "nobu.nakata@gmail.com"
+	},
+	"name": "jp.nobnak.random-xorwow",
+	"displayName": "Xorwow random",
+	"version": "0.1.0",
+
+	"samples": [
+	],
+
+	"dependencies": {
+	}
+}

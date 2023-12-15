@@ -1,5 +1,5 @@
 #pragma kernel CSMain
-#include "../../Packages/Xorwow/Xorwow.cginc"
+#include "Packages/jp.nobnak.random-xorwow/ShaderLibrary/Xorwow.cginc"
 
 
 

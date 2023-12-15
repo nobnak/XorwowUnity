@@ -1,4 +1,6 @@
-﻿Shader "Custom/Second" {
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Second" {
 	Properties {
 	}
 	SubShader {
@@ -10,7 +12,7 @@
 			#pragma target 5.0
 			#pragma vertex vert
 			#pragma fragment frag
-			#include "../../Packages/Xorwow/Xorwow.cginc"
+			#include "Packages/jp.nobnak.random-xorwow/ShaderLibrary/Xorwow.cginc"
 			
 			struct vsin {
 				float4 vertex : POSITION;
@@ -25,7 +27,7 @@
 			
 			vs2ps vert(vsin IN) {
 				vs2ps OUT;
-				OUT.vertex = mul(UNITY_MATRIX_MVP, IN.vertex);
+				OUT.vertex = UnityObjectToClipPos(IN.vertex);
 				OUT.uv = IN.uv * int2(_Width, _Height);
 				return OUT;
 			}
