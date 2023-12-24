@@ -1,9 +1,11 @@
 # Xorwow[1] RNG (Random Number Generator) for Unity
 
 ## Installation
+Released as [UPM package on OpenUPM](https://openupm.com/packages/jp.nobnak.random-xorwow/).
+
 - Add Scoped Registry "https://package.openupm.com"
 - Add scope "jp.nobnak" in the registry
-- Add package "[Xorwow random](https://openupm.com/packages/jp.nobnak.random-xorwow/)" in Package Manager.
+- Add package "Xorwow random" in Package Manager.
 
 ## Usage
 ### In Compute Shader
